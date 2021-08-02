@@ -1,0 +1,151 @@
+
+/* Author: Dilay SAPMAZ
+ * ID: 041701032
+ * Starting Date:11.02.2018 
+ * Finish Date: 20.02.2018
+ */
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
+public class objectAssignment1 extends Application {
+	public void start(Stage primaryStage) {
+
+		double circleArray[][] = new double[9][3]; //creating an array because of keeping x,y and radius parameters
+
+		//1. circle x,y,r parameters
+		circleArray[0][0]=100; 
+		circleArray[0][1]=100; 
+		circleArray[0][2]=50; 
+		
+		//2. circle x,y,r parameters
+		circleArray[1][0]=500; 
+		circleArray[1][1]=100; 
+		circleArray[1][2]=50; 
+		
+		//3. circle x,y,r parameters
+		circleArray[2][0]=500; 
+		circleArray[2][1]=500;  
+		circleArray[2][2]=50; 
+		
+		//4. circle x,y,r parameters
+		circleArray[3][0]=100;  
+		circleArray[3][1]=500; 
+		circleArray[3][2]=50;  
+		
+		//5. circle x,y,r parameters
+		circleArray[4][0]=300;  
+		circleArray[4][1]=100; 
+		circleArray[4][2]=20; 
+		
+		//6. circle x,y,r parameters
+		circleArray[5][0]=500; 
+		circleArray[5][1]=300;
+		circleArray[5][2]=20;
+		
+		//7. circle x,y,r parameters
+		circleArray[6][0]=300; 
+		circleArray[6][1]=500;
+		circleArray[6][2]=20;
+		
+		//8. circle x,y,r parameters
+		circleArray[7][0]=100;
+		circleArray[7][1]=300;
+		circleArray[7][2]=20;
+		
+		//9. circle x,y,r parameters
+		circleArray[8][0]=300; 
+		circleArray[8][1]=300; 
+		circleArray[8][2]=150;  
+
+		//scene parameters
+		int sceneWidth = 600;
+		int sceneHeight = 600;
+		Pane pane = new Pane();  //create a pane
+		Scene scene=new Scene(pane,sceneHeight,sceneWidth); 
+
+		for(int i=0; i<9 ; i++) {    //for loop, zero to length of array
+			Circle circle = new Circle();  // I make a circle and put that into for loop for create 9 circles
+			circle.setCenterX(circleArray[i][0]); //assigning circle's x, -->
+			circle.setCenterY(circleArray[i][1]); //y and -->
+			circle.setRadius(circleArray[i][2]);  //radius parameters.
+
+			circle.setStrokeWidth(3); //circles' edge line thickness
+			circle.setFill(Color.WHITE); //circles' inside color
+			circle.setStroke(Color.BLACK); // circles' edge line color
+			pane.getChildren().add(circle); // we take the children to the scene :)
+		}
+
+		for(int a=0; a<10000; a++){ // creating a for loop for small circles that will go random
+
+			Circle random2Dpoints=new Circle(); //create small circles
+			double x=Math.random()*sceneHeight; //I did it for the small point to be random
+			double y=Math.random()*sceneWidth;
+
+			random2Dpoints.setCenterX(x);  //small circles x, y and radius 
+			random2Dpoints.setCenterY(y);
+			random2Dpoints.setRadius(0.5);
+
+			//these are the formulas for calculating the distances of a random point relative to the radius of all the circles
+			double distance1=Math.pow(Math.pow(x-circleArray[0][0],2)+Math.pow(y-circleArray[0][1],2),0.5);
+			double distance2=Math.pow(Math.pow(x-circleArray[1][0],2)+Math.pow(y-circleArray[1][1],2),0.5);
+			double distance3=Math.pow(Math.pow(x-circleArray[2][0],2)+Math.pow(y-circleArray[2][1],2),0.5);
+			double distance4=Math.pow(Math.pow(x-circleArray[3][0],2)+Math.pow(y-circleArray[3][1],2),0.5);
+			double distance5=Math.pow(Math.pow(x-circleArray[4][0],2)+Math.pow(y-circleArray[4][1],2),0.5);
+			double distance6=Math.pow(Math.pow(x-circleArray[5][0],2)+Math.pow(y-circleArray[5][1],2),0.5);
+			double distance7=Math.pow(Math.pow(x-circleArray[6][0],2)+Math.pow(y-circleArray[6][1],2),0.5);
+			double distance8=Math.pow(Math.pow(x-circleArray[7][0],2)+Math.pow(y-circleArray[7][1],2),0.5);
+			double distance9=Math.pow(Math.pow(x-circleArray[8][0],2)+Math.pow(y-circleArray[8][1],2),0.5);
+
+			//if a random point's distance to circles radius is greater or equal to, small point will be aqua, else it will be grey.
+
+			if( distance1 <= circleArray[0][2]) {
+				random2Dpoints.setStroke(Color.RED);
+				random2Dpoints.setFill(Color.RED);
+			}else if( distance2 <= circleArray[1][2]) {
+				random2Dpoints.setStroke(Color.RED);
+				random2Dpoints.setFill(Color.RED);
+			}else if (distance3 <= circleArray[2][2]) {
+				random2Dpoints.setStroke(Color.RED);
+				random2Dpoints.setFill(Color.RED);
+			}else if (distance4 <= circleArray[3][2]) {
+				random2Dpoints.setStroke(Color.RED);
+				random2Dpoints.setFill(Color.RED);
+			} else if(distance5 <= circleArray[4][2]) {
+				random2Dpoints.setStroke(Color.RED);
+				random2Dpoints.setFill(Color.RED);
+			}else if(distance6 <= circleArray[5][2]) {
+				random2Dpoints.setStroke(Color.RED);
+				random2Dpoints.setFill(Color.RED);
+			}else if(distance7 <= circleArray[6][2]) {
+				random2Dpoints.setStroke(Color.RED);
+				random2Dpoints.setFill(Color.RED);
+			}else if (distance8 <= circleArray[7][2]) {
+				random2Dpoints.setStroke(Color.RED);
+				random2Dpoints.setFill(Color.RED);
+			}else if (distance9<= circleArray[8][2]) {
+				random2Dpoints.setStroke(Color.RED);
+				random2Dpoints.setFill(Color.RED);
+			}else {
+				random2Dpoints.setStroke(Color.LIGHTGREY);
+				random2Dpoints.setFill(Color.LIGHTGREY);
+			}
+			// these are the necessary things that the code needs to run successfully
+			pane.getChildren().add(random2Dpoints);
+		}
+		primaryStage.setTitle("Circle Inside Outside Test"); // Set the stage title
+		primaryStage.setResizable(false);
+		primaryStage.setScene(scene); // Place the scene in the stage
+		primaryStage.show();
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+
+
+
